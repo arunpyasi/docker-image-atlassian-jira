@@ -102,6 +102,7 @@ LABEL com.atlassian.application.jira.version=$JIRA_PRODUCT-$JIRA_VERSION \
 USER jira
 WORKDIR ${JIRA_HOME}
 VOLUME ["/var/atlassian/jira"]
+RUN chown $USER:$USER $VOLUME
 EXPOSE 8080
 ENTRYPOINT ["/usr/bin/tini","--","/usr/local/bin/docker-entrypoint.sh"]
 CMD ["jira"]
